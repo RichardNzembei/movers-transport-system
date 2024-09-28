@@ -8,6 +8,7 @@ import Loaders from '../views/Loaders.vue';
 import Drivers from '../views/Drivers.vue';
 
 
+
 const routes = [
   { path: '/', component: Dashboard },
   { path: '/members', component: Members },
@@ -16,6 +17,7 @@ const routes = [
   { path: '/orders', component: Orders },
   { path: '/loaders', component: Loaders },
   { path: '/drivers', component:Drivers },
+ 
 
 ];
 
