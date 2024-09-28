@@ -4,7 +4,7 @@
 
 <template>
   <div class="dashboard">
-    <p>Welcome to the Movers Transport System.</p>
+    <h4>Welcome to the Movers Transport System.</h4>
     <div class="cards">
       <div class="card">
         <img src="../assets/icons/members.png" alt="Members Icon" class="card-icon" />
@@ -45,7 +45,19 @@
 
   
   <style scoped>
-
+  .dashboard {
+  background-image: url('../assets/img/movers.jpg'); /* Update the path to your image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  padding: 20px; /* Add some padding */
+  color: white; /* Change text color if needed for contrast */
+}
+h4{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bolder;
+  text-align: center;
+ color: rgb(22, 36, 170);
+}
 p {
   color: rgb(201, 144, 59);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
