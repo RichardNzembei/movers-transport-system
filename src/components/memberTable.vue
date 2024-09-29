@@ -40,7 +40,7 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: left;
-  padding: 5px;
+  padding: 2px;
   margin: 3px;
 }
 
