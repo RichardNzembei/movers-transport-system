@@ -16,7 +16,7 @@
   </template>
   
   <script>
-  import { useEmployeeStore } from '@/stores/employeeStore';
+  import { useEmployeeStore } from '../stores/employeeStore';
   
   export default {
     setup() {

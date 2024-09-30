@@ -2,7 +2,7 @@
 <template>
     <div>
       <h1>Farmer Dashboard</h1>
-      <router-link to="/my-orders">View My Orders</router-link>
+      <router-link to="/farmerreg">View My Orders</router-link>
     </div>
   </template>
   

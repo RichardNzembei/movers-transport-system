@@ -10,7 +10,7 @@
   </template>
   
   <script>
-  import { useFarmerStore } from '@/stores/farmerStore';
+  import { useFarmerStore } from '../stores/farmerStote';
   
   export default {
     setup() {

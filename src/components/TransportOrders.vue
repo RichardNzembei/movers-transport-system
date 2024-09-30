@@ -27,7 +27,7 @@
   </template>
   
   <script>
-  import { useOrdersStore } from '@/stores/ordersStore';
+  import { useOrdersStore } from '../stores/ordersStore';
   
   export default {
     setup() {

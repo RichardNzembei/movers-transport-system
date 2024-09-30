@@ -50,7 +50,7 @@
   
         if (isAuthenticated) {
           if (role.value === 'admin') {
-            router.push('/admin');
+            router.push('/admindashboard');
           } else if (role.value === 'farmer') {
             router.push('/farmerdashboard');
           }
