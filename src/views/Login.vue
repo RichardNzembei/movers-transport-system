@@ -1,85 +1,132 @@
 <!-- Login.vue -->
+<script setup>
+import { useAuthStore } from "../stores/authStore";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+
+const email = ref("");
+const password = ref("");
+const role = ref("farmer");
+const error = ref("");
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+// The login function
+const login = () => {
+  const isAuthenticated = authStore.authenticateUser({
+    email: email.value,
+    password: password.value,
+    role: role.value,
+  });
+
+  if (isAuthenticated) {
+    if (role.value === "admin") {
+      router.push("/admindashboard");
+    } else if (role.value === "farmer") {
+      router.push("/farmerdashboard");
+    }
+  } else {
+    error.value = "Invalid email or password";
+  }
+};
+</script>
+
+
 <template>
+  <div class="login">
     <div class="login-container">
-      <h2>Login</h2>
-      <form @submit.prevent="login">
-        <div>
-          <label>Email</label>
-          <input type="email" v-model="email" required />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" v-model="password" required />
-        </div>
-        <div>
-          <label>Role</label>
-          <select v-model="role" required>
-            <option value="admin">Admin</option>
-            <option value="farmer">Farmer</option>
-          </select>
-        </div>
-        <button type="submit">Login</button>
-        <p v-if="error" class="error">{{ error }}</p>
-      </form>
-    </div>
-  </template>
+      <div class="login-box">
+        <h2>Sign in</h2>
+    <form @submit.prevent="login">
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" v-model="email" required />
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" v-model="password" required />
+      </div>
+      <div class="input-group">
+        <label>Role</label>
+        <select v-model="role" required>
+          <option value="admin">Admin</option>
+          <option value="farmer">Farmer</option>
+        </select>
+      </div>
+      <button type="submit">Login</button>
+      <p v-if="error" class="error">{{ error }}</p>
+    </form>
+      </div>
+   
+  </div>
+  </div>
+
+</template>
   
-  <script>
-  import { useAuthStore } from '../stores/authStore';
-  import { useRouter } from 'vue-router';
-  import { ref } from 'vue';
-  
-  export default {
-    setup() {
-      // Declare reactive state properties using ref
-      const email = ref('');
-      const password = ref('');
-      const role = ref('farmer');
-      const error = ref('');
-  
-      const authStore = useAuthStore();
-      const router = useRouter();
-  
-      // The login function
-      const login = () => {
-        const isAuthenticated = authStore.authenticateUser({
-          email: email.value,
-          password: password.value,
-          role: role.value,
-        });
-  
-        if (isAuthenticated) {
-          if (role.value === 'admin') {
-            router.push('/admindashboard');
-          } else if (role.value === 'farmer') {
-            router.push('/farmerdashboard');
-          }
-        } else {
-          error.value = 'Invalid email or password';
-        }
-      };
-  
-      return {
-        email,
-        password,
-        role,
-        error,
-        login,
-      };
-    },
-  };
-  </script>
-  
+ 
   <style scoped>
-  .login-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .login{
+    background-image: linear-gradient(to right,rgb(167, 167, 184),rgb(80, 80, 146));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+
   }
-  .error {
-    color: red;
-  }
-  </style>
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+ 
+  
+}
+.login-box{
+  background-color: rgb(226, 182, 182);
+  padding: 30px;
+  border-radius: 5px;
+  text-align: center;
+}
+.input-group{
+  margin: 15px 10px;
+}
+label{
+  display: block;
+  color: rgb(11, 11, 12);
+  font-size: 14px;
+  text-align: left;
+}
+input{
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 4px;
+}
+option{
+  padding: 10px;
+  color: rgb(22, 98, 165);
+}
+select{
+  padding: 5px;
+  border:none;
+  border-radius:5px;
+}
+button{
+  border:none;
+  border-radius: 5px;
+  color: rgb(56, 103, 145);
+  padding: 7px;
+}
+h2{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+  color: rgb(57, 113, 161);
+}
+.error {
+  color: red;
+}
+</style>
   
