@@ -17,7 +17,7 @@ export default {
 
 <style>
 .app{
-  background-color: aliceblue;
-  height: 1000px;
+  background-color:white;
+  height: 100%;
 }
 </style>
