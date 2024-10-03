@@ -1,122 +1,221 @@
 <script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+const tosignup=()=>{
+  router.push('/signupdashboard')
+}
+const admin = ref({
+  fName: "",
+  lName: "",
+  mName: "",
+  nationalId: "",
+  gender: "",
+  email: "",
+  password: "",
+  selected: "", // Admin role in the company
+  companyemail: "",
+  workId: "",
+  role: "",
+});
+
+const registerAdmin = (e) => {
+  e.preventDefault();
+
+  if (
+    !admin.value.fName ||
+    !admin.value.email ||
+    !admin.value.password ||
+    !admin.value.role
+  ) {
+    alert("Please fill in all the required fields.");
+    return;
+  }
+
+  const existingAdmins = JSON.parse(localStorage.getItem("admins")) || [];
+
+  existingAdmins.push({ ...admin.value });
+
+  localStorage.setItem("admins", JSON.stringify(existingAdmins));
+
+  Object.assign(admin.value, {
+    fName: "",
+    lName: "",
+    mName: "",
+    nationalId: "",
+    gender: "",
+    email: "",
+    password: "",
+    selected: "",
+    companyemail: "",
+    workId: "",
+    role: "",
+  });
+
+  alert("Admin registered successfully!");
+  router.push("/");
+};
 </script>
+
 <template>
-   <h4>User Rgistration!!</h4>
-       <span>fill the form and submit</span>
-    <div class="register-container">
-     
-<div class="forms-box">
-<div class="form-card">
-    <h3>Personal Details</h3>
-<form>
-    <label for="fName">First Name</label><br>
-    <input type="text" placeholder="Enter your First name" ><br><br>
-    <label for="lName">Last Name</label><br>
-    <input type="text" placeholder="Enter your Last name"><br><br>
-    <label for="mName">Middle Name</label><br>
-    <input type="text" placeholder="**Optional"><br><br>
-    <label for="National Id">National Id No</label><br>
-    <input type="text" placeholder="enter your ID No"><br><br>
-    <label for="Gennder">Gender</label>
-    <select >
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select><br><br>
-    <label for="email">Email</label><br>
-    <input type="text" placeholder="enter your Gmail"><br><br>
-    <label for="password">Password</label><br>
-    <input type="text" placeholder="enter your password"><br>
-</form>
-</div>
-<div class="form-card">
-    <h3>Location details</h3>
-<form>
-    <label for="Country">Country</label><br>
-    <input type="text" placeholder="Enter your Country`s Name" ><br><br>
-    <label for="County">county</label><br>
-    <input type="text" placeholder="Enter your County`s name"><br><br>
-    <label for="Sub-county">Sub-County</label><br>
-    <input type="text" placeholder="Enter your sub-conty"><br><br>
-    <label for="province">Province</label><br>
-    <input type="text" placeholder="Enter your province"><br><br>
-    <label for="address">Address</label>
-    <input type="text" placeholder="Enter your address"><br><br>
+      <button @click="tosignup">back</button>
+  <h4>Admin Registration!!</h4>
+  <span>Fill the form and submit</span>
+  <div class="register-container">
+    <div class="forms-box">
+      <form @submit.prevent="registerAdmin">
+        <div class="form-card">
+          <h3>Personal Details</h3>
 
- 
-</form>
-</div>
-<div class="form-card">
-    <h3>Farmer details</h3>
-<form>
-    <label for="farmer type">Farm Type</label>
- <select name="" id="">
-    <option value="commercial">Commercial</option>
-    <option value="domestic">Domestic</option>
-    <option value="Plantation">Plantation</option>
-    <option value="Indigeneos">Indigeneous</option>
+          <label for="role">Role</label><br />
+          <select v-model="admin.role" required>
+            <option disabled value="">Select Role</option>
+            <option value="farmer">Farmer</option>
+            <option value="admin">Admin</option></select
+          ><br /><br />
 
- </select><br><br>
- <label for="produce">Produce</label>
- <input type="text" name="produce" id="name" placeholder="enter products">
- 
-</form>
-</div>
-</div>
+          <label for="fName">First Name</label><br />
+          <input
+            v-model="admin.fName"
+            type="text"
+            placeholder="Enter your First name"
+            required
+          /><br /><br />
+
+          <label for="lName">Last Name</label><br />
+          <input
+            v-model="admin.lName"
+            type="text"
+            placeholder="Enter your Last name"
+          /><br /><br />
+
+          <label for="mName">Middle Name</label><br />
+          <input
+            v-model="admin.mName"
+            type="text"
+            placeholder="**Optional"
+          /><br /><br />
+
+          <label for="nationalId">National Id No</label><br />
+          <input
+            v-model="admin.nationalId"
+            type="text"
+            placeholder="Enter your ID No"
+          /><br /><br />
+
+          <label for="gender">Gender</label><br />
+          <select v-model="admin.gender" required>
+            <option disabled value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option></select
+          ><br /><br />
+
+          <label for="email">Email</label><br />
+          <input
+            v-model="admin.email"
+            type="email"
+            placeholder="Enter your email"
+            required
+          /><br /><br />
+
+          <label for="password">Password</label><br />
+          <input
+            v-model="admin.password"
+            type="password"
+            placeholder="Enter your password"
+            required
+          /><br />
+        </div>
+
+        <div class="form-card">
+          <h3>Company Details</h3>
+
+          <label for="selected">Category</label><br />
+          <select v-model="admin.selected" required>
+            <option disabled value="">Select Category</option>
+            <option value="ceo">CEO</option>
+            <option value="cto">CTO</option>
+            <option value="tech staff">Tech Staff</option>
+            <option value="staff">Staff</option></select
+          ><br /><br />
+
+          <label for="companyemail">Company Email</label><br />
+          <input
+            v-model="admin.companyemail"
+            type="email"
+            placeholder="Enter your company email"
+          /><br />
+
+          <label for="workId">Company ID</label><br />
+          <input
+            v-model="admin.workId"
+            type="text"
+            placeholder="Enter your Company ID"
+          /><br />
+
+          <button type="submit">Register Admin</button><br><br>
+          <span>do you have an account?<router-link to="/">Login</router-link></span>
+        </div>
+      </form>
     </div>
-</template>
-<style scoped>
-.register-container{
-    display: flexbox;
-    align-items: center;
-    justify-content: center;
-    background-color:white;
-    height: 100vh;
-}
-.forms-box{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    border: 1px solid black;
     
+  </div>
+</template>
+
+<style scoped>
+form {
+  display: flex;
 }
-.form-card{
-    padding: 20px;
-    background-color: rgb(209, 202, 202);
-    width: 300px;
-    border-radius: 5px;
-    border-right: 1px solid black;
+.register-container {
+  display: flexbox;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  height: 100vh;
+}
+.forms-box {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid black;
+}
+.form-card {
+  padding: 20px;
+  background-color: rgb(209, 202, 202);
+  width: 300px;
+  border-radius: 5px;
+  border-right: 1px solid black;
 }
 
-    label{
+label {
   display: block;
-  
+
   font-size: 14px;
   text-align: left;
   color: rgb(86, 141, 189);
 }
 
-    input{
+input {
   width: 250px;
-  padding: 10px ;
+  padding: 10px;
 
   border: none;
   border-radius: 4px;
   border: 1px solid rgb(133, 123, 123);
   margin: 3px 4px 4px 4px;
 }
-input:hover{
-    background-color: antiquewhite;
+input:hover {
+  background-color: antiquewhite;
 }
-h3{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+h3 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-h4{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-
+h4 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
-select{
-    padding: 4px;
+select {
+  padding: 4px;
 }
 </style>

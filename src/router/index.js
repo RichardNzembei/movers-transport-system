@@ -12,6 +12,7 @@ import AdminRegistration from '../components/AdminRegistration.vue';
 
 
 
+
 const routes = [
   { path: '/', component: Login },
   {path:'/signupdashboard', component:SignUp},
@@ -21,7 +22,8 @@ const routes = [
   { path: '/transportdashboard', component: TransportOrders},
   { path: '/revenuedashboard', component: RevenueProfits },
   { path: '/farmerreg', component: FarmerRegistration },
-  {path:'/adminregistration', component:AdminRegistration}
+  {path:'/adminregistration', component:AdminRegistration},
+
 
  
 
