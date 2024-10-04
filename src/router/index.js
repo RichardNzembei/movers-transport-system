@@ -26,9 +26,9 @@ const routes = [
   { path: '/revenuedashboard', component: RevenueProfits },
   { path: '/farmerreg', component: FarmerRegistration },
   { path: '/adminregistration', component: AdminRegistration },
-  {path:'/farmers', component:Farmers},
-  {path:'/adminprofile', component:adminProfile},
-  {path:'/farmerprofile', component:farmerProfile}
+  { path: '/farmers', component: Farmers },
+  { path: '/adminprofile', component: adminProfile },
+  { path: '/farmerprofile', component: farmerProfile }
 
 
 
