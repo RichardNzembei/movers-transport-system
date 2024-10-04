@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
-const role = ref("farmer");
+const role = ref("");
 const error = ref("");
 const router = useRouter();
 
@@ -33,6 +33,10 @@ const login = () => {
     error.value = "Invalid email, password, or role";
   }
 };
+const showPassword = ref(false);
+const togglepassword = () => {
+  showPassword.value = !showPassword.value;
+};
 </script>
 
 
@@ -49,14 +53,21 @@ const login = () => {
           </div>
           <div class="input-group">
             <label>Password</label>
-            <input type="password" v-model="password" required />
+            <input
+              :type="showPassword ? 'text' : 'password'"
+              v-model="password"
+              required
+            />
+            <span class="show-password" @click="togglepassword">{{
+              showPassword ? "🙈" : "👁️"
+            }}</span>
           </div>
           <div class="input-group">
             <label>Role</label>
             <select v-model="role" required>
-              <option disabled value="">choose role</option>
-              <option value="admin">Admin</option>
-              <option value="farmer">Farmer</option>
+              <option disabled value="">Select Role</option>
+            <option value="farmer">Farmer</option>
+            <option value="admin">Admin</option>
             </select>
           </div>
           <button type="submit">Login</button>
@@ -139,6 +150,15 @@ h2 {
 }
 .item {
   padding: 10px;
+}
+.show-password {
+  position: relative;
+  right: -90px;
+  top: -29px;
+  cursor: pointer;
+  color: #a87070;
+  border-left: 1px solid black;
+  padding: 4px;
 }
 </style>
   

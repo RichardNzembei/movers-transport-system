@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-const router=useRouter()
-const tosignup=()=>{
-  router.push('/signupdashboard')
-}
+const router = useRouter();
+const tosignup = () => {
+  router.push("/signupdashboard");
+};
 
 const farmer = ref({
   fName: "",
@@ -65,6 +65,10 @@ const registerFarmer = () => {
   } else {
     alert("Please fill all required fields.");
   }
+};
+const showPassword = ref(false);
+const togglepassword = () => {
+  showPassword.value = !showPassword.value;
 };
 </script>
 
@@ -136,10 +140,13 @@ const registerFarmer = () => {
             <label for="Password">Password</label><br />
             <input
               v-model="farmer.password"
-              type="password"
+              :type="showPassword ? 'text' : 'password'"
               placeholder="Enter your password"
               required
             /><br />
+            <span class="show-password" @click="togglepassword">{{
+              showPassword ? "🙈" : "👁️"
+            }}</span>
           </div>
 
           <div class="form-card">
@@ -202,8 +209,12 @@ const registerFarmer = () => {
               placeholder="Enter products"
             /><br /><br />
 
-            <button type="submit">Register</button><br><br>
-            <span>do you have an account?<router-link to="/">Login</router-link></span>
+            <button type="submit">Register</button><br /><br />
+            <span
+              >do you have an account?<router-link to="/"
+                >Login</router-link
+              ></span
+            >
           </div>
         </form>
       </div>
@@ -265,6 +276,15 @@ h4 {
   font-family: Arial, Helvetica, sans-serif;
 }
 select {
+  padding: 4px;
+}
+.show-password {
+  position: relative;
+  right: -240px;
+  top: -31px;
+  cursor: pointer;
+  color: #a87070;
+  border-left: 1px solid black;
   padding: 4px;
 }
 </style> 

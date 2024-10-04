@@ -3,9 +3,9 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const tosignup=()=>{
-  router.push('/signupdashboard')
-}
+const tosignup = () => {
+  router.push("/signupdashboard");
+};
 const admin = ref({
   fName: "",
   lName: "",
@@ -14,7 +14,7 @@ const admin = ref({
   gender: "",
   email: "",
   password: "",
-  selected: "", // Admin role in the company
+  selected: "",
   companyemail: "",
   workId: "",
   role: "",
@@ -56,10 +56,14 @@ const registerAdmin = (e) => {
   alert("Admin registered successfully!");
   router.push("/");
 };
+const showPassword = ref(false);
+const togglepassword = () => {
+  showPassword.value = !showPassword.value;
+};
 </script>
 
 <template>
-      <button @click="tosignup">back</button>
+  <button @click="tosignup">back</button>
   <h4>Admin Registration!!</h4>
   <span>Fill the form and submit</span>
   <div class="register-container">
@@ -122,10 +126,13 @@ const registerAdmin = (e) => {
           <label for="password">Password</label><br />
           <input
             v-model="admin.password"
-            type="password"
+            :type="showPassword ? 'text' : 'password'"
             placeholder="Enter your password"
             required
           /><br />
+          <span class="show-password" @click="togglepassword">{{
+            showPassword ? "🙈" : "👁️"
+          }}</span>
         </div>
 
         <div class="form-card">
@@ -154,12 +161,15 @@ const registerAdmin = (e) => {
             placeholder="Enter your Company ID"
           /><br />
 
-          <button type="submit">Register Admin</button><br><br>
-          <span>do you have an account?<router-link to="/">Login</router-link></span>
+          <button type="submit">Register Admin</button><br /><br />
+          <span
+            >do you have an account?<router-link to="/"
+              >Login</router-link
+            ></span
+          >
         </div>
       </form>
     </div>
-    
   </div>
 </template>
 
@@ -216,6 +226,15 @@ h4 {
   font-family: Arial, Helvetica, sans-serif;
 }
 select {
+  padding: 4px;
+}
+.show-password {
+  position: relative;
+  right: -240px;
+  top: -31px;
+  cursor: pointer;
+  color: #a87070;
+  border-left: 1px solid black;
   padding: 4px;
 }
 </style>

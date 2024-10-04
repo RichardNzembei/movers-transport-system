@@ -1,14 +1,10 @@
 <script>
-
-
 export default {
-  name: 'App',
-
+  name: "App",
 };
 </script>
 <template>
   <div id="app" class="app">
-   
     <router-view />
   </div>
 </template>
@@ -16,8 +12,8 @@ export default {
 
 
 <style>
-.app{
-  background-color:white;
+.app {
+  background-color: white;
   height: 100%;
 }
 </style>
