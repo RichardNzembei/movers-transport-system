@@ -24,12 +24,12 @@ if (loggedInEmail) {
         <div class="info-details">
           <p>
             <strong class="info-label">Category</strong>
-            <span class="info-data">{{currentAdmin.selected}}</span>
+            <span class="info-data">{{currentAdmin.selected.toUpperCase()}}</span>
           </p>
           <p>
             <strong class="info-label">Name </strong>
   
-            <span class="info-data">{{ currentAdmin.fName +''+currentAdmin.lName }}</span>
+            <span class="info-data">{{ currentAdmin.fName.toUpperCase()+' '+currentAdmin.lName.toUpperCase() }}</span>
           </p>
           <p>
             <strong class="info-label">ID No </strong>
@@ -37,14 +37,14 @@ if (loggedInEmail) {
           </p>
           <p>
             <strong class="info-label">Gender </strong>
-            <span class="info-data">{{ currentAdmin.gender }}</span>
+            <span class="info-data">{{ currentAdmin.gender.toUpperCase() }}</span>
           </p>
         
         </div>
         <div class="info-details">
           <p>
             <strong class="info-label">Company ID</strong>
-            <span class="info-data">{{ currentAdmin.workId }}</span>
+            <span class="info-data">{{ currentAdmin.workId.toUpperCase()}}</span>
           </p>
           <p>
             <strong class="info-label"> Company Email </strong>

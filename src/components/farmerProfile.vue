@@ -26,7 +26,7 @@ if (loggedInEmail) {
           <p>
             <strong class="info-label">Name </strong>
   
-            <span class="info-data">{{ currentFarmer.fName  +''+currentFarmer.lName }}</span>
+            <span class="info-data">{{ currentFarmer.fName.toUpperCase() +' '+currentFarmer.lName.toUpperCase() }}</span>
           </p>
           <p>
             <strong class="info-label">ID No </strong>
@@ -34,7 +34,7 @@ if (loggedInEmail) {
           </p>
           <p>
             <strong class="info-label">Gender </strong>
-            <span class="info-data">{{ currentFarmer.Selected }}</span>
+            <span class="info-data">{{ currentFarmer.Selected.toUpperCase()}}</span>
           </p>
           <p>
             <strong class="info-label">Email </strong>
@@ -44,16 +44,16 @@ if (loggedInEmail) {
         <div class="info-details">
           <p>
             <strong class="info-label">County</strong>
-            <span class="info-data">{{ currentFarmer.county }}</span>
+            <span class="info-data">{{ currentFarmer.county.toUpperCase() }}</span>
           </p>
           
           <p>
             <strong class="info-label"> Farm Type</strong>
-            <span class="info-data">{{ currentFarmer.type }}</span>
+            <span class="info-data">{{ currentFarmer.type.toUpperCase()}}</span>
           </p>
           <p>
             <strong class="info-label">Produce</strong>
-            <span class="info-data">{{ currentFarmer.produce }}</span>
+            <span class="info-data">{{ currentFarmer.produce.toUpperCase()}}</span>
           </p>
           <p>
             <strong class="info-label">Total Orders</strong>

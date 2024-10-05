@@ -141,7 +141,7 @@ const togglepassword = () => {
           <label for="selected">Category</label><br />
           <select v-model="admin.selected" required>
             <option disabled value="">Select Category</option>
-            <option value="ceo">CEO</option>
+            <option value="CEO">CEO</option>
             <option value="cto">CTO</option>
             <option value="tech staff">Tech Staff</option>
             <option value="staff">Staff</option></select

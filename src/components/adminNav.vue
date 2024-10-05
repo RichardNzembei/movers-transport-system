@@ -44,7 +44,7 @@ const toadminprofile=()=>{
         alt="profile-icon"
         class="profile-icon"
       />
-      <span class="profile-name"  @click="toadminprofile">{{ currentAdmin.fName }}</span>
+      <span class="profile-name"  @click="toadminprofile">{{ currentAdmin.fName.toUpperCase()}}</span>
       
    
     </div>

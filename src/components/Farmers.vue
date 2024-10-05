@@ -5,7 +5,7 @@ const fullname=storedFarmers.fName +''+ storedFarmers.lName
 </script>
 <template>
 <adminNav/>
-<h3>welcome to farmers</h3>    
+<h3 v-if="storedFarmers.length>0">welcome to farmers</h3>    
 <div class="farmers-list">
 <table>
     <tr>
@@ -21,7 +21,7 @@ const fullname=storedFarmers.fName +''+ storedFarmers.lName
         <th>produce</th>
     </tr>
     <tr v-for="farmer in storedFarmers" :key="farmer.NationalId">
-        <td>{{ farmer.fName +''+farmer.lName }}</td>
+        <td>{{ farmer.fName +' '+farmer.lName }}</td>
         <td>{{ farmer.Selected }}</td>
         <td>{{ farmer.email }}</td>
         <td>{{ farmer.country }}</td>

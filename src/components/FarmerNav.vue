@@ -42,7 +42,7 @@ const tofarmerprofile=()=>{
         alt="profile-icon"
         class="profile-icon"
       />
-      <span class="profile-name" @click="tofarmerprofile">{{ currentFarmer.fName }}</span>
+      <span class="profile-name" @click="tofarmerprofile">{{ currentFarmer.fName.toUpperCase() }}</span>
     </div>
     <div class="nav-right" @click="logout">
       <img
