@@ -1,7 +1,10 @@
 <script setup>
 import { ref, reactive, onMounted, computed } from "vue";
+const isActionsVisible=ref(false)
 
 const isEditing = ref(false);
+const actionDriverIndex = ref(null)
+const actionLoaderIndex = ref(null)
 const newEmployee = reactive({
   category: "",
   fName: "",
@@ -62,6 +65,23 @@ const resetForm = () => {
 };
 const drivers=computed(()=>employees.value.filter(emp=>emp.category==='driver'))
 const loaders=computed(()=>employees.value.filter(emp=>emp.category==='loader'))
+const toggleActions=()=>{
+    isActionsVisible.value=!isActionsVisible.value
+}
+const toggleDriverAction = (index) => {
+  if (actionDriverIndex.value === index) {
+    actionDriverIndex.value = null; 
+  } else {
+    actionDriverIndex.value = index; 
+  }
+};
+const toggleLoaderAction = (index) => {
+  if (actionLoaderIndex.value === index) {
+    actionLoaderIndex.value = null; 
+  } else {
+    actionLoaderIndex.value = index; 
+  }
+};
 </script>
 <template>
   <div class="employee-reg">
@@ -120,27 +140,38 @@ const loaders=computed(()=>employees.value.filter(emp=>emp.category==='loader'))
     </div>
   </div>
 <div class="employees-list">
-    <div v-if="drivers.length>0" class="list">
-    <h2>drivers List</h2>
-    <table>
+    <div v-if="drivers.length > 0" class="list">
+      <h2>Drivers List</h2>
+      <table>
         <tr>
-            <th>Name</th>
-            <th>Work ID</th>
-            <th>Company Email</th>
-            <th>Actions</th>
+          <th>Name</th>
+          <th>Work ID</th>
+          <th>Company Email</th>
+          <th>Actions</th>
         </tr>
-        <tr v-for="(employee,index) in drivers" :key="index">
-            <td>{{ employee.fName+''+employee.lName }}</td>
-            <td>{{ employee.workId }}</td>
-            <td>{{ employee.companyemail }}</td>
-            <td>
-                <button @click="editEmployee(employee, index)">Edit</button>
-                <button @click="deleteEmployee(index)">Delete</button>
-            </td>
+        <tr v-for="(employee, index) in drivers" :key="index">
+          <td>{{ employee.fName + ' ' + employee.lName }}</td>
+          <td>{{ employee.workId }}</td>
+          <td>{{ employee.companyemail }}</td>
+          <td>
+            <span>
+              <img
+                src="../assets/icons/actions.png"
+                alt="actions icon"
+                @click="toggleDriverAction(index)"
+                class="actions-icon"
+              />
+            </span>
+            <div v-if="actionDriverIndex === index" class="actions-dropdown">
+        <button @click="editEmployee(employee, index)">Edit</button><br /><br />
+        <button @click="deleteEmployee(index)">Delete</button>
+      </div>
+          </td>
         </tr>
-    </table>
+      </table>
 
-  </div>
+     
+    </div>
   <div v-else class="list">
 <p>No drivers at the moment!!</p>
   </div>
@@ -154,12 +185,22 @@ const loaders=computed(()=>employees.value.filter(emp=>emp.category==='loader'))
             <th>Actions</th>
         </tr>
         <tr v-for="(employee,index) in loaders" :key="index">
-            <td>{{ employee.fName+''+employee.lName }}</td>
+            <td>{{ employee.fName + ' ' + employee.lName }}</td>
             <td>{{ employee.workId }}</td>
             <td>{{ employee.companyemail }}</td>
             <td>
-                <button @click="editEmployee(employee, index)">Edit</button>
-                <button @click="deleteEmployee(index)">Delete</button>
+                <span>
+                <img 
+                src="../assets/icons/actions.png" 
+                alt="actions icon"
+                 @click="toggleLoaderAction(index)" 
+                 class="actions-icon">
+              
+             </span>
+             <div class="actions-dropdown" v-if="actionLoaderIndex===index">
+                    <button @click="editEmployee(employee, index)">Edit</button><br><br>
+                    <button @click="deleteEmployee(index)">Delete</button>
+                </div>
             </td>
         </tr>
     </table>
@@ -211,11 +252,29 @@ input {
 table,th,td{
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 10px;
+}
+th{
+    color: rgb(35, 115, 185);
 }
 p{
     color: rgb(32, 123, 202);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 24px;
+}
+.actions-dropdown{
+    background-color: aliceblue;
+    display:inline-block;
+    position: fixed;
+    border: 1px solid rgb(207, 203, 203);
+    z-index: 1000;
+    padding: 20px;
+    align-items: flex-start;
+    border-radius: 5px;
+}
+.actions-icon{
+    width: 28px;
+    height: 28px;
 }
 </style>
