@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, computed } from "vue";
 
 const isEditing = ref(false);
 const newEmployee = reactive({
@@ -29,6 +29,27 @@ const createEmployee = () => {
     resetForm();
   }
 };
+const editEmployee=(employee,index)=>{
+    isEditing.value=true
+    currentIndex.value=index
+    Object.assign(newEmployee,employee)
+}
+const updateEmployee=()=>{
+    if (newEmployee.fName && newEmployee.lName && newEmployee.workId){
+    employees.value[currentIndex.value]={...newEmployee}
+    saveEmployees()
+    isEditing.value=false
+    currentIndex.value=-1
+    resetForm()
+    }
+}
+const cancelEdit=()=>{
+    resetForm()
+}
+const deleteEmployee=(index)=>{
+employees.value.splice(index,1)
+saveEmployees()
+}
 const resetForm = () => {
   newEmployee.category = "";
   newEmployee.fName = "";
@@ -39,6 +60,8 @@ const resetForm = () => {
   isEditing.value = false;
   currentIndex.value = -1;
 };
+const drivers=computed(()=>employees.value.filter(emp=>emp.category==='driver'))
+const loaders=computed(()=>employees.value.filter(emp=>emp.category==='loader'))
 </script>
 <template>
   <div class="employee-reg">
@@ -96,15 +119,55 @@ const resetForm = () => {
       </form>
     </div>
   </div>
-  <div v-if="employees.length">
-    <h2>Employee List</h2>
-    <ul>
-      <li v-for="(employee, index) in employees" :key="index">
-        {{ employee.fName }} {{ employee.lName }} ({{ employee.category }}) -
-        <button @click="editEmployee(employee, index)">Edit</button>
-      </li>
-    </ul>
+<div class="employees-list">
+    <div v-if="drivers.length>0" class="list">
+    <h2>drivers List</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Work ID</th>
+            <th>Company Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr v-for="(employee,index) in drivers" :key="index">
+            <td>{{ employee.fName+''+employee.lName }}</td>
+            <td>{{ employee.workId }}</td>
+            <td>{{ employee.companyemail }}</td>
+            <td>
+                <button @click="editEmployee(employee, index)">Edit</button>
+                <button @click="deleteEmployee(index)">Delete</button>
+            </td>
+        </tr>
+    </table>
+
   </div>
+  <div v-else class="list">
+<p>No drivers at the moment!!</p>
+  </div>
+  <div v-if="loaders.length" class="list">
+    <h2>loaders List</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Work ID</th>
+            <th>Company Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr v-for="(employee,index) in loaders" :key="index">
+            <td>{{ employee.fName+''+employee.lName }}</td>
+            <td>{{ employee.workId }}</td>
+            <td>{{ employee.companyemail }}</td>
+            <td>
+                <button @click="editEmployee(employee, index)">Edit</button>
+                <button @click="deleteEmployee(index)">Delete</button>
+            </td>
+        </tr>
+    </table>
+  </div>
+  <div v-else class="list">
+<p>No loaders at the moment!!</p>
+  </div>
+</div>
 </template>
 <style scoped>
 .form {
@@ -136,5 +199,23 @@ input {
 .buttons {
   display: flex;
   justify-content: center;
+}
+.employees-list{
+    display: flex;
+
+}
+.list{
+    width: 100%;
+    border-right: 1px solid rgb(190, 180, 180);
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+p{
+    color: rgb(32, 123, 202);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
 }
 </style>
