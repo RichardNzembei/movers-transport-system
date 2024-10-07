@@ -6,6 +6,6 @@ Movers Transport ststem is a Platform that links farmers and retailers <br>provi
 2.Pinia -state management<br>
 3.Local storage-storage of employees,admins,farmers,orders data<br>
 4.Vue Router-navigation<br>
-5Tailwind Css for styling and responsiveness
+5Tailwind CSS-styling and responsiveness
 # Visit Website
 [app](https://movers-transport-system.onrender.com/)
