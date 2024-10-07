@@ -76,9 +76,9 @@ const togglepassword = () => {
 <template>
   <div class="container mx-auto p-4">
     <button @click="tosignup" class="mb-4">
-      <img src="../assets/icons/back.png" alt="back">
+      <img src="../assets/icons/back.png" alt="back" />
     </button>
-    <h4 class="text-2xl font-bold text-center mb-2 ">Farmer Registration!!</h4>
+    <h4 class="text-2xl font-bold text-center mb-2">Farmer Registration!!</h4>
     <p class="text-center text-gray-600 mb-8">Fill the form and submit</p>
     <div class="max-w-lg mx-auto">
       <div class="bg-white shadow-md rounded-lg p-6">
@@ -87,11 +87,15 @@ const togglepassword = () => {
             <h3 class="text-xl font-semibold mb-4">Personal Details</h3>
 
             <label for="role" class="block mb-2">Role</label>
-            <select v-model="farmer.role" required class="w-full p-2 border rounded-md">
+            <select
+              v-model="farmer.role"
+              required
+              class="w-full p-2 border rounded-md"
+            >
               <option disabled value="">Select Role</option>
               <option value="farmer">Farmer</option>
-              <option value="admin">Admin</option></select
-            >
+              <option value="admin">Admin</option>
+            </select>
 
             <label for="fName" class="block mt-4 mb-2">First Name</label>
             <input
@@ -119,7 +123,9 @@ const togglepassword = () => {
               class="w-full p-2 border rounded-md"
             />
 
-            <label for="NationalId" class="block mt-4 mb-2">National Id No</label>
+            <label for="NationalId" class="block mt-4 mb-2"
+              >National Id No</label
+            >
             <input
               v-model="farmer.NationalId"
               type="text"
@@ -129,11 +135,15 @@ const togglepassword = () => {
             />
 
             <label for="Gender" class="block mt-4 mb-2">Gender</label>
-            <select v-model="farmer.Selected" required class="w-full p-2 border rounded-md">
+            <select
+              v-model="farmer.Selected"
+              required
+              class="w-full p-2 border rounded-md"
+            >
               <option disabled value="">Select Gender</option>
               <option value="male">Male</option>
-              <option value="female">Female</option></select
-            >
+              <option value="female">Female</option>
+            </select>
 
             <label for="email" class="block mt-4 mb-2">Email</label>
             <input
@@ -145,17 +155,21 @@ const togglepassword = () => {
             />
 
             <div class="mb-4 mt-2 relative">
-            <label class="block text-gray-700 font-medium mb-2">Password</label>
-            <input
-              :type="showPassword ? 'text' : 'password'"
-              v-model="password"
-              required
-              class="w-full p-2 border rounded-md"
-            />
-            <span class="absolute right-3 top-9 cursor-pointer text-gray-500 border-l-4 p-1" @click="togglepassword">{{
-              showPassword ? "🙈" : "👁️"
-            }}</span>
-          </div>
+              <label class="block text-gray-700 font-medium mb-2"
+                >Password</label
+              >
+              <input
+                :type="showPassword ? 'text' : 'password'"
+                v-model="password"
+                required
+                class="w-full p-2 border rounded-md"
+              />
+              <span
+                class="absolute right-3 top-9 cursor-pointer text-gray-500 border-l-4 p-1"
+                @click="togglepassword"
+                >{{ showPassword ? "🙈" : "👁️" }}</span
+              >
+            </div>
           </div>
 
           <div class="form-card">
@@ -179,8 +193,8 @@ const togglepassword = () => {
               class="w-full p-2 border rounded-md"
             />
 
-            <label for="Sub-county" class="block mt-4 mb-2">Sub-County</label>   
-                     <input
+            <label for="Sub-county" class="block mt-4 mb-2">Sub-County</label>
+            <input
               v-model="farmer.subcounty"
               type="text"
               placeholder="Enter your Sub-county"
@@ -208,13 +222,17 @@ const togglepassword = () => {
             <h3 class="text-xl font-semibold mb-4 mt-4">Farmer Details</h3>
 
             <label for="farmType" class="block mt-4 mb-2">Farm Type</label>
-            <select v-model="farmer.type" required class="w-full p-2 border rounded-md">
+            <select
+              v-model="farmer.type"
+              required
+              class="w-full p-2 border rounded-md"
+            >
               <option disabled value="">Select Farm Type</option>
               <option value="commercial">Commercial</option>
               <option value="domestic">Domestic</option>
               <option value="plantation">Plantation</option>
-              <option value="indigenous">Indigenous</option></select
-            >
+              <option value="indigenous">Indigenous</option>
+            </select>
             <label for="produce" class="block mt-4 mb-2">Produce</label>
             <input
               v-model="farmer.produce"
@@ -223,12 +241,19 @@ const togglepassword = () => {
               class="w-full p-2 border rounded-md"
             />
 
-            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md mt-6 hover:bg-white hover:text-blue-500">Register</button>
-           
+            <button
+              type="submit"
+              class="w-full bg-blue-500 text-white p-3 rounded-md mt-6 hover:bg-white hover:text-blue-500"
+            >
+              Register
+            </button>
+
             <p class="mt-4 text-center">
-          Already have an account?
-          <router-link to="/" class="text-blue-500 hover:underline">Login</router-link>
-        </p>
+              Already have an account?
+              <router-link to="/" class="text-blue-500 hover:underline"
+                >Login</router-link
+              >
+            </p>
           </div>
         </form>
       </div>

@@ -42,19 +42,25 @@ const togglepassword = () => {
 
 
 <template>
-  <div class="min-h-screen flex justify-center items-center bg-gradient-to-r from-gray-400 to-blue-500">
-    <div class="max-w-md w-full sm:mx-2">
-      <div class="bg-white p-8 rounded-lg shadow-lg ">
-        <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">Sign in</h2>
+  <div
+    class="min-h-screen flex justify-center items-center bg-gradient-to-r from-gray-400 to-blue-500"
+  >
+    <div class="container max-w-md w-full mx-auto px-3">
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h2
+          class="text-2xl font-bold text-blue-600 mb-6 text-center border-b-2"
+        >
+          Sign in
+        </h2>
         <form @submit.prevent="login">
           <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2">Email</label>
             <input
-             type="email" 
-             v-model="email" 
-             required 
-             class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-             />
+              type="email"
+              v-model="email"
+              required
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
           <div class="mb-4 relative">
             <label class="block text-gray-700 font-medium mb-2">Password</label>
@@ -64,39 +70,45 @@ const togglepassword = () => {
               required
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <span class="absolute right-3 top-9 cursor-pointer text-gray-500 border-l-4 p-2" @click="togglepassword">{{
-              showPassword ? "🙈" : "👁️"
-            }}</span>
+            <span
+              class="absolute right-3 top-9 cursor-pointer text-gray-500 border-l-4 p-2"
+              @click="togglepassword"
+            >
+              {{ showPassword ? "🙈" : "👁️" }}
+            </span>
           </div>
           <div class="mb-6">
             <label class="block text-gray-700 font-medium mb-2">Role</label>
-            <select 
-            v-model="role"
-             required
-             class="w-full p-3 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-             >
+            <select
+              v-model="role"
+              required
+              class="w-full p-3 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
               <option disabled value="">Select Role</option>
-            <option value="farmer">Farmer</option>
-            <option value="admin">Admin</option>
+              <option value="farmer">Farmer</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
-          <button 
-          type="submit"
-          class="w-full bg-blue-600 rounded-lg p-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          <button
+            type="submit"
+            class="w-full bg-blue-600 rounded-lg p-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-          Login
-        </button>
+            Login
+          </button>
           <p v-if="error" class="text-red-500 mt-4 text-center">{{ error }}</p>
         </form>
-<div class="mt-4 text-center">
-  <span>Don't have an account?</span>
-  <router-link to="/signupdashboard" class="text-blue-500 hover:underline">Sign Up</router-link>
-</div>
+        <div class="mt-4 text-center">
+          <span>Don't have an account?</span>
+          <router-link
+            to="/signupdashboard"
+            class="text-blue-500 hover:underline"
+            >Sign Up</router-link
+          >
+        </div>
       </div>
     </div>
   </div>
 </template>
-
 
  
   
