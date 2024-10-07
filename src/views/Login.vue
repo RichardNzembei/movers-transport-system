@@ -42,39 +42,56 @@ const togglepassword = () => {
 
 
 <template>
-  <div class="login">
-    <div class="login-container">
-      <div class="login-box">
-        <h2>Sign in</h2>
+  <div class="min-h-screen flex justify-center items-center bg-gradient-to-r from-gray-400 to-blue-500">
+    <div class="max-w-md w-full sm:mx-2">
+      <div class="bg-white p-8 rounded-lg shadow-lg ">
+        <h2 class="text-2xl font-bold text-blue-600 mb-6 text-center">Sign in</h2>
         <form @submit.prevent="login">
-          <div class="input-group">
-            <label>Email</label>
-            <input type="email" v-model="email" required />
+          <div class="mb-4">
+            <label class="block text-gray-700 font-medium mb-2">Email</label>
+            <input
+             type="email" 
+             v-model="email" 
+             required 
+             class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+             />
           </div>
-          <div class="input-group">
-            <label>Password</label>
+          <div class="mb-4 relative">
+            <label class="block text-gray-700 font-medium mb-2">Password</label>
             <input
               :type="showPassword ? 'text' : 'password'"
               v-model="password"
               required
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <span class="show-password" @click="togglepassword">{{
+            <span class="absolute right-3 top-9 cursor-pointer text-gray-500 border-l-4 p-2" @click="togglepassword">{{
               showPassword ? "🙈" : "👁️"
             }}</span>
           </div>
-          <div class="input-group">
-            <label>Role</label>
-            <select v-model="role" required>
+          <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-2">Role</label>
+            <select 
+            v-model="role"
+             required
+             class="w-full p-3 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+             >
               <option disabled value="">Select Role</option>
             <option value="farmer">Farmer</option>
             <option value="admin">Admin</option>
             </select>
           </div>
-          <button type="submit">Login</button>
-          <p v-if="error" class="error">{{ error }}</p>
+          <button 
+          type="submit"
+          class="w-full bg-blue-600 rounded-lg p-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+          Login
+        </button>
+          <p v-if="error" class="text-red-500 mt-4 text-center">{{ error }}</p>
         </form>
-        <span>Don't have an account?</span>
-        <router-link to="/signupdashboard" class="item">Sign Up</router-link>
+<div class="mt-4 text-center">
+  <span>Don't have an account?</span>
+  <router-link to="/signupdashboard" class="text-blue-500 hover:underline">Sign Up</router-link>
+</div>
       </div>
     </div>
   </div>
@@ -82,83 +99,5 @@ const togglepassword = () => {
 
 
  
-  <style scoped>
-form {
-  border-bottom: 1px solid black;
-}
-.login {
-  background-image: linear-gradient(
-    to right,
-    rgb(167, 167, 184),
-    rgb(80, 80, 146)
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-.login-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-}
-.login-box {
-  background-color: rgb(226, 182, 182);
-  padding: 30px;
-  border-radius: 5px;
-  text-align: center;
-}
-.input-group {
-  margin: 15px 10px;
-}
-label {
-  display: block;
-  color: rgb(11, 11, 12);
-  font-size: 14px;
-  text-align: left;
-}
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: none;
-  border-radius: 4px;
-}
-option {
-  padding: 10px;
-  color: rgb(22, 98, 165);
-}
-select {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-}
-button {
-  border: none;
-  border-radius: 5px;
-  color: rgb(56, 103, 145);
-  padding: 7px;
-}
-h2 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: bolder;
-  color: rgb(57, 113, 161);
-}
-.error {
-  color: red;
-}
-.item {
-  padding: 10px;
-}
-.show-password {
-  position: relative;
-  right: -90px;
-  top: -29px;
-  cursor: pointer;
-  color: #a87070;
-  border-left: 1px solid black;
-  padding: 4px;
-}
-</style>
+  
   
