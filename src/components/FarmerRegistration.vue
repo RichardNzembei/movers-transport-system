@@ -74,147 +74,161 @@ const togglepassword = () => {
 
 
 <template>
-  <div>
-    <button @click="tosignup">back</button>
-    <h4>Farmer Registration!!</h4>
-    <span>Fill the form and submit</span>
-    <div class="register-container">
-      <div class="forms-box">
+  <div class="container mx-auto p-4">
+    <button @click="tosignup" class="mb-4">
+      <img src="../assets/icons/back.png" alt="back">
+    </button>
+    <h4 class="text-2xl font-bold text-center mb-2 ">Farmer Registration!!</h4>
+    <p class="text-center text-gray-600 mb-8">Fill the form and submit</p>
+    <div class="max-w-lg mx-auto">
+      <div class="bg-white shadow-md rounded-lg p-6">
         <form @submit.prevent="registerFarmer">
-          <div class="form-card">
-            <h3>Personal Details</h3>
+          <div class="form-card mb-6">
+            <h3 class="text-xl font-semibold mb-4">Personal Details</h3>
 
-            <label for="role">Role</label><br />
-            <select v-model="farmer.role" required>
+            <label for="role" class="block mb-2">Role</label>
+            <select v-model="farmer.role" required class="w-full p-2 border rounded-md">
               <option disabled value="">Select Role</option>
               <option value="farmer">Farmer</option>
               <option value="admin">Admin</option></select
-            ><br /><br />
+            >
 
-            <label for="fName">First Name</label><br />
+            <label for="fName" class="block mt-4 mb-2">First Name</label>
             <input
               v-model="farmer.fName"
               type="text"
               placeholder="Enter your First name"
               required
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="lName">Last Name</label><br />
+            <label for="lName" class="block mt-4 mb-2">Last Name</label>
             <input
               v-model="farmer.lName"
               type="text"
               placeholder="Enter your Last name"
               required
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="mName">Middle Name</label><br />
+            <label for="mName" class="block mt-4 mb-2">Middle Name</label>
             <input
               v-model="farmer.mName"
               type="text"
               placeholder="**Optional"
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="NationalId">National Id No</label><br />
+            <label for="NationalId" class="block mt-4 mb-2">National Id No</label>
             <input
               v-model="farmer.NationalId"
               type="text"
               placeholder="Enter your ID No"
               required
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="Gender">Gender</label><br />
-            <select v-model="farmer.Selected" required>
+            <label for="Gender" class="block mt-4 mb-2">Gender</label>
+            <select v-model="farmer.Selected" required class="w-full p-2 border rounded-md">
               <option disabled value="">Select Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option></select
-            ><br /><br />
+            >
 
-            <label for="email">Email</label><br />
+            <label for="email" class="block mt-4 mb-2">Email</label>
             <input
               v-model="farmer.email"
               type="email"
               placeholder="Enter your email"
               required
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="Password">Password</label><br />
+            <div class="mb-4 mt-2 relative">
+            <label class="block text-gray-700 font-medium mb-2">Password</label>
             <input
-              v-model="farmer.password"
               :type="showPassword ? 'text' : 'password'"
-              placeholder="Enter your password"
+              v-model="password"
               required
-            /><br />
-            <span class="show-password" @click="togglepassword">{{
+              class="w-full p-2 border rounded-md"
+            />
+            <span class="absolute right-3 top-9 cursor-pointer text-gray-500 border-l-4 p-1" @click="togglepassword">{{
               showPassword ? "🙈" : "👁️"
             }}</span>
           </div>
+          </div>
 
           <div class="form-card">
-            <h3>Location Details</h3>
+            <h3 class="text-xl font-semibold mb-4">Location Details</h3>
 
-            <label for="Country">Country</label><br />
+            <label for="Country" class="block mt-4 mb-2">Country</label>
             <input
               v-model="farmer.country"
               type="text"
               placeholder="Enter your Country's Name"
               required
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="County">County</label><br />
+            <label for="County" class="block mt-4 mb-2">County</label>
             <input
               v-model="farmer.county"
               type="text"
               placeholder="Enter your County's name"
               required
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="Sub-county">Sub-County</label><br />
-            <input
+            <label for="Sub-county" class="block mt-4 mb-2">Sub-County</label>   
+                     <input
               v-model="farmer.subcounty"
               type="text"
               placeholder="Enter your Sub-county"
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="province">Province</label><br />
+            <label for="province" class="block mt-4 mb-2">Province</label>
             <input
               v-model="farmer.province"
               type="text"
               placeholder="Enter your Province"
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <label for="address">Address</label><br />
+            <label for="address" class="block mt-4 mb-2">Address</label>
             <input
               v-model="farmer.address"
               type="text"
               placeholder="Enter your address"
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
           </div>
 
           <div class="form-card">
-            <h3>Farmer Details</h3>
+            <h3 class="text-xl font-semibold mb-4 mt-4">Farmer Details</h3>
 
-            <label for="farmType">Farm Type</label><br />
-            <select v-model="farmer.type" required>
+            <label for="farmType" class="block mt-4 mb-2">Farm Type</label>
+            <select v-model="farmer.type" required class="w-full p-2 border rounded-md">
               <option disabled value="">Select Farm Type</option>
               <option value="commercial">Commercial</option>
               <option value="domestic">Domestic</option>
               <option value="plantation">Plantation</option>
               <option value="indigenous">Indigenous</option></select
-            ><br /><br />
-
-            <label for="produce">Produce</label><br />
+            >
+            <label for="produce" class="block mt-4 mb-2">Produce</label>
             <input
               v-model="farmer.produce"
               type="text"
               placeholder="Enter products"
-            /><br /><br />
+              class="w-full p-2 border rounded-md"
+            />
 
-            <button type="submit">Register</button><br /><br />
-            <span
-              >do you have an account?<router-link to="/"
-                >Login</router-link
-              ></span
-            >
+            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md mt-6 hover:bg-white hover:text-blue-500">Register</button>
+           
+            <p class="mt-4 text-center">
+          Already have an account?
+          <router-link to="/" class="text-blue-500 hover:underline">Login</router-link>
+        </p>
           </div>
         </form>
       </div>
@@ -223,70 +237,4 @@ const togglepassword = () => {
 </template>
 
 
- <style scoped>
-form {
-  display: flex;
-}
-.register-container {
-  display: flexbox;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  height: 100vh;
-}
-.forms-box {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid black;
-}
-.form-card {
-  padding: 20px;
-  background-color: rgb(209, 202, 202);
-  width: 300px;
-  border-radius: 5px;
-  border-right: 1px solid black;
-}
-
-label {
-  display: block;
-
-  font-size: 14px;
-  text-align: left;
-  color: rgb(86, 141, 189);
-}
-
-input {
-  width: 250px;
-  padding: 10px;
-
-  border: none;
-  border-radius: 4px;
-  border: 1px solid rgb(133, 123, 123);
-  margin: 3px 4px 4px 4px;
-}
-input:hover {
-  background-color: antiquewhite;
-}
-h3 {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-h4 {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
-select {
-  padding: 4px;
-}
-.show-password {
-  position: relative;
-  right: -240px;
-  top: -31px;
-  cursor: pointer;
-  color: #a87070;
-  border-left: 1px solid black;
-  padding: 4px;
-}
-</style> 
-
-  
+ 
