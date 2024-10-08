@@ -160,7 +160,7 @@ const togglepassword = () => {
               >
               <input
                 :type="showPassword ? 'text' : 'password'"
-                v-model="password"
+                v-model="farmer.password"
                 required
                 class="w-full p-2 border rounded-md"
               />

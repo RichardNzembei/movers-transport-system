@@ -85,196 +85,164 @@ const toggleLoaderAction = (index) => {
 </script>
 <template>
   <div class="employee-reg">
-    <div class="form-card">
-      <h2>{{ isEditing ? "Edit" : "Add" }} Employee</h2>
+    <div class="form-card bg-white shadow-md rounded-lg p-5 mb-5">
+      <h2 class="text-2xl font-semibold">{{ isEditing ? "Edit" : "Add" }} Employee</h2>
       <form>
-        <div class="form">
-          <div class="section">
-            <label for="categoty">Category</label><br />
-            <select v-model="newEmployee.category">
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+          <div class="flex-1">
+            <label for="category" class="block text-gray-700">Category</label>
+            <select v-model="newEmployee.category" class="mt-1 block w-full p-2 border border-gray-300 rounded">
               <option disabled value="">Select Category</option>
               <option value="driver">Driver</option>
-              <option value="loader">Loader</option></select
-            ><br />
-            <label for="fName">First Name</label><br />
+              <option value="loader">Loader</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label for="fName" class="block text-gray-700">First Name</label>
             <input
               type="text"
-              placeholder="enter first name"
+              placeholder="Enter first name"
               v-model="newEmployee.fName"
-            /><br />
-            <label for="lName">Last Name</label><br />
-            <input
-              type="text"
-              placeholder="enter last name"
-              v-model="newEmployee.lName"
+              class="mt-1 block w-full p-2 border border-gray-300 rounded"
             />
           </div>
-          <div class="section">
-            <label for="workId">Work ID</label><br />
+          <div class="flex-1">
+            <label for="lName" class="block text-gray-700">Last Name</label>
             <input
               type="text"
-              placeholder="enter work ID"
-              v-model="newEmployee.workId"
-            /><br />
-            <label for="companyemail">Company Email</label><br />
-            <input
-              type="text"
-              placeholder="enter company email"
-              v-model="newEmployee.companyemail"
-            /><br />
-            <label for="email">Email</label><br />
-            <input
-              type="text"
-              placeholder="enter email"
-              v-model="newEmployee.email"
+              placeholder="Enter last name"
+              v-model="newEmployee.lName"
+              class="mt-1 block w-full p-2 border border-gray-300 rounded"
             />
           </div>
         </div>
-        <div class="buttons">
-          <button @click="isEditing ? updateEmployee() : createEmployee()">
-            {{ isEditing ? "update" : "create" }}
+
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4">
+          <div class="flex-1">
+            <label for="workId" class="block text-gray-700">Work ID</label>
+            <input
+              type="text"
+              placeholder="Enter work ID"
+              v-model="newEmployee.workId"
+              class="mt-1 block w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div class="flex-1">
+            <label for="companyemail" class="block text-gray-700">Company Email</label>
+            <input
+              type="text"
+              placeholder="Enter company email"
+              v-model="newEmployee.companyemail"
+              class="mt-1 block w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+          <div class="flex-1">
+            <label for="email" class="block text-gray-700">Email</label>
+            <input
+              type="text"
+              placeholder="Enter email"
+              v-model="newEmployee.email"
+              class="mt-1 block w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-4 space-x-4">
+          <button
+            type="button"
+            @click="isEditing ? updateEmployee() : createEmployee()"
+            class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
+          >
+            {{ isEditing ? "Update" : "Create" }}
           </button>
-          <button v-if="isEditing" @click="cancelEdit()">cancel</button>
+          <button
+            v-if="isEditing"
+            type="button"
+            @click="cancelEdit()"
+            class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
-  </div>
-<div class="employees-list">
-    <div v-if="drivers.length > 0" class="list">
-      <h2>Drivers List</h2>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Work ID</th>
-          <th>Company Email</th>
-          <th>Actions</th>
-        </tr>
-        <tr v-for="(employee, index) in drivers" :key="index">
-          <td>{{ employee.fName + ' ' + employee.lName }}</td>
-          <td>{{ employee.workId }}</td>
-          <td>{{ employee.companyemail }}</td>
-          <td>
-            <span>
-              <img
-                src="../assets/icons/actions.png"
-                alt="actions icon"
-                @click="toggleDriverAction(index)"
-                class="actions-icon"
-              />
-            </span>
-            <div v-if="actionDriverIndex === index" class="actions-dropdown">
-        <button @click="editEmployee(employee, index)">Edit</button><br /><br />
-        <button @click="deleteEmployee(index)">Delete</button>
-      </div>
-          </td>
-        </tr>
-      </table>
 
-     
-    </div>
-  <div v-else class="list">
-<p>No drivers at the moment!!</p>
-  </div>
-  <div v-if="loaders.length" class="list">
-    <h2>loaders List</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Work ID</th>
-            <th>Company Email</th>
-            <th>Actions</th>
-        </tr>
-        <tr v-for="(employee,index) in loaders" :key="index">
-            <td>{{ employee.fName + ' ' + employee.lName }}</td>
-            <td>{{ employee.workId }}</td>
-            <td>{{ employee.companyemail }}</td>
-            <td>
+    <div class="employees-list flex flex-col space-y-5">
+      <div v-if="drivers.length > 0" class="list bg-white shadow-md rounded-lg p-5">
+        <h2 class="text-2xl font-semibold">Drivers List</h2>
+        <table class="min-w-full border-collapse border border-gray-300 mt-3">
+          <thead>
+            <tr>
+              <th class="border border-gray-300 p-2">Name</th>
+              <th class="border border-gray-300 p-2">Work ID</th>
+              <th class="border border-gray-300 p-2">Company Email</th>
+              <th class="border border-gray-300 p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(employee, index) in drivers" :key="index">
+              <td class="border border-gray-300 p-2">{{ employee.fName + ' ' + employee.lName }}</td>
+              <td class="border border-gray-300 p-2">{{ employee.workId }}</td>
+              <td class="border border-gray-300 p-2">{{ employee.companyemail }}</td>
+              <td class="border border-gray-300 p-2">
                 <span>
-                <img 
-                src="../assets/icons/actions.png" 
-                alt="actions icon"
-                 @click="toggleLoaderAction(index)" 
-                 class="actions-icon">
-              
-             </span>
-             <div class="actions-dropdown" v-if="actionLoaderIndex===index">
-                    <button @click="editEmployee(employee, index)">Edit</button><br><br>
-                    <button @click="deleteEmployee(index)">Delete</button>
+                  <img
+                    src="../assets/icons/actions.png"
+                    alt="actions icon"
+                    @click="toggleDriverAction(index)"
+                    class="actions-icon cursor-pointer"
+                  />
+                </span>
+                <div v-if="actionDriverIndex === index" class="actions-dropdown absolute bg-white border border-gray-300 p-3 rounded shadow-md">
+                  <button @click="editEmployee(employee, index)" class="block text-blue-500">Edit</button>
+                  <button @click="deleteEmployee(index)" class="block text-red-500">Delete</button>
                 </div>
-            </td>
-        </tr>
-    </table>
-  </div>
-  <div v-else class="list">
-<p>No loaders at the moment!!</p>
-  </div>
-</div>
-</template>
-<style scoped>
-.form {
-  display: flex;
-  padding: 10px;
-  align-items: center;
-  justify-content: flex-start;
-}
-form {
-  border: 1px solid rgb(230, 227, 227);
-}
-.section {
-  margin: 10px;
-  padding: 10px;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  width: 100%;
-}
-label {
-  color: rgb(12, 115, 204);
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
-input {
-  padding: 5px;
-  width: 100%;
-}
-.buttons {
-  display: flex;
-  justify-content: center;
-}
-.employees-list{
-    display: flex;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div v-else class="list">
+        <p class="text-red-500">No drivers at the moment!!</p>
+      </div>
 
-}
-.list{
-    width: 100%;
-    border-right: 1px solid rgb(190, 180, 180);
-}
-table,th,td{
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 10px;
-}
-th{
-    color: rgb(35, 115, 185);
-}
-p{
-    color: rgb(32, 123, 202);
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 24px;
-}
-.actions-dropdown{
-    background-color: aliceblue;
-    display:inline-block;
-    position: fixed;
-    border: 1px solid rgb(207, 203, 203);
-    z-index: 1000;
-    padding: 20px;
-    align-items: flex-start;
-    border-radius: 5px;
-}
-.actions-icon{
-    width: 28px;
-    height: 28px;
-}
-</style>
+      <div v-if="loaders.length > 0" class="list bg-white shadow-md rounded-lg p-5">
+        <h2 class="text-2xl font-semibold">Loaders List</h2>
+        <table class="min-w-full border-collapse border border-gray-300 mt-3">
+          <thead>
+            <tr>
+              <th class="border border-gray-300 p-2">Name</th>
+              <th class="border border-gray-300 p-2">Work ID</th>
+              <th class="border border-gray-300 p-2">Company Email</th>
+              <th class="border border-gray-300 p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(employee, index) in loaders" :key="index">
+              <td class="border border-gray-300 p-2">{{ employee.fName + ' ' + employee.lName }}</td>
+              <td class="border border-gray-300 p-2">{{ employee.workId }}</td>
+              <td class="border border-gray-300 p-2">{{ employee.companyemail }}</td>
+              <td class="border border-gray-300 p-2">
+                <span>
+                  <img 
+                    src="../assets/icons/actions.png" 
+                    alt="actions icon"
+                    @click="toggleLoaderAction(index)" 
+                    class="actions-icon cursor-pointer"
+                  />
+                </span>
+                <div v-if="actionLoaderIndex === index" class="actions-dropdown absolute bg-white border border-gray-300 p-3 rounded shadow-md">
+                  <button @click="editEmployee(employee, index)" class="block text-blue-500">Edit</button>
+                  <button @click="deleteEmployee(index)" class="block text-red-500">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div v-else class="list">
+        <p class="text-red-500">No loaders at the moment!!</p>
+      </div>
+    </div>
+  </div>
+</template>
