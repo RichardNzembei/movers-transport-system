@@ -1,15 +1,13 @@
-<script setup >
+<script setup>
 import { ref } from "vue";
 import { useDropdownStore } from "../stores/dropdownStore";
 import { useRouter } from "vue-router";
-import FarmerRegistration from "./FarmerRegistration.vue";
 
 const router = useRouter();
 const store = useDropdownStore();
 
 const currentFarmer = ref(null);
 const storedFarmers = JSON.parse(localStorage.getItem("farmers")) || [];
-
 const loggedInEmail = localStorage.getItem("loggedInUserEmail");
 
 if (loggedInEmail) {
@@ -22,7 +20,8 @@ const logout = () => {
   localStorage.removeItem("loggedInUserEmail");
   router.push("/");
 };
-const tofarmerprofile = () => {
+
+const toFarmerProfile = () => {
   router.push("/farmerprofile");
 };
 </script>
@@ -37,16 +36,17 @@ const tofarmerprofile = () => {
         class="cursor-pointer mr-3 w-7 h-7"
       />
       <img
-        @click="tofarmerprofile"
+        @click="toFarmerProfile"
         src="../assets/icons/admin-icon.png"
         alt="profile-icon"
         class="cursor-pointer mr-3 w-7 h-7 rounded-full border border-white"
       />
       <span
         class="text-xl text-black mr-4 cursor-pointer"
-        @click="tofarmerprofile"
-        >{{ currentFarmer.fName.toUpperCase() }}</span
+        @click="toFarmerProfile"
       >
+        {{ currentFarmer ? currentFarmer.fName.toUpperCase() : 'Farmer' }}
+      </span>
     </div>
 
     <div class="flex items-center" @click="logout">
@@ -78,8 +78,9 @@ const tofarmerprofile = () => {
         <router-link
           to="/farmerdashboard"
           class="text-black no-underline hover:text-blue-500"
-          >Home</router-link
         >
+          Home
+        </router-link>
       </div>
 
       <div class="flex items-center mt-6">
@@ -89,13 +90,13 @@ const tofarmerprofile = () => {
           class="cursor-pointer mr-3 w-6 h-6 rounded-full border border-white"
         />
         <router-link
-          to="/farmerreg"
+          to="/farmerorder"
           class="text-black no-underline hover:text-blue-500"
-          >Orders</router-link
         >
+          Orders
+        </router-link>
       </div>
     </div>
   </nav>
 </template>
 
-  

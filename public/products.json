@@ -1,0 +1,62 @@
+{
+    "herbicides": [
+      { "name": "Glyphosate", "pricePerKg": 20, "selected": false, "quantity": 0, "category": "Herbicides" },
+      { "name": "2,4-D-Amine", "pricePerKg": 18, "selected": false, "quantity": 0, "category": "Herbicides" },
+      { "name": "Topramezone + Dicamba", "pricePerKg": 25, "selected": false, "quantity": 0, "category": "Herbicides" },
+      { "name": "S-Metolachlor", "pricePerKg": 22, "selected": false, "quantity": 0, "category": "Herbicides" },
+      { "name": "Hexazinone", "pricePerKg": 30, "selected": false, "quantity": 0, "category": "Herbicides" }
+    ],
+    "insecticides": [
+      { "name": "Pyrethroids (beta-cyfluthrin, imidacloprid, deltamethrin)", "pricePerKg": 40, "selected": false, "quantity": 0, "category": "Insecticides" },
+      { "name": "Organophosphates (chlorpyrifos, profenofos)", "pricePerKg": 35, "selected": false, "quantity": 0, "category": "Insecticides" },
+      { "name": "Neonicotinoids (thiamethoxam)", "pricePerKg": 32, "selected": false, "quantity": 0, "category": "Insecticides" }
+    ],
+    "pesticides": [
+      { "name": "Biochemical Pesticides (Pyrethrum, Eugenol, etc.)", "pricePerKg": 28, "selected": false, "quantity": 0, "category": "Pesticides" },
+      { "name": "Microbial Pesticides (Bacillus thuringiensis)", "pricePerKg": 30, "selected": false, "quantity": 0, "category": "Pesticides" },
+      { "name": "Rodenticides", "pricePerKg": 22, "selected": false, "quantity": 0, "category": "Pesticides" },
+      { "name": "Fumigants", "pricePerKg": 35, "selected": false, "quantity": 0, "category": "Pesticides" }
+    ],
+    "fertilizers": [
+     
+      { "name": "Muriate of Potash (KCI) 50%", "pricePerKg": 10, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Muriate of Potash (KCI) 41%", "pricePerKg": 8, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Muriate of Potash (KCI) 33%", "pricePerKg": 7, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Potassium Sulfate (K₂SO₄) 43%", "pricePerKg": 12, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Potassium Nitrate (KNO₃) 37%", "pricePerKg": 11, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Sulfate of Potash Magnesia (K₂SO₄ 2MgSO₄) 18%", "pricePerKg": 15, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Kainite 10%", "pricePerKg": 5, "selected": false, "quantity": 0, "category": "Fertilizers" },
+   
+      { "name": "Maize: 14:29:8+S+Ca+Zn+B", "pricePerKg": 18, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Wheat: 15:36:4+S+Mg+Zn+B+Cu", "pricePerKg": 20, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Potato and Onion: 14:28:14+S+Zn+B+Cu", "pricePerKg": 22, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Legume: 11:22:15+S+Ca+Zn+B+Cu", "pricePerKg": 16, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Rice: 11:23:23+S+Zn+B+Cu", "pricePerKg": 19, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Rice Ratoon: 14:0:20+S+Zn+B+Cu", "pricePerKg": 17, "selected": false, "quantity": 0, "category": "Fertilizers" },
+   
+      { "name": "Ammonium Nitrate (33.5–34.5% N)", "pricePerKg": 25, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Ammonium Nitrate Lime (21–26% N)", "pricePerKg": 22, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Urea (46% N)", "pricePerKg": 30, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Sulphate of Ammonia (SoA) (21% N)", "pricePerKg": 18, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Sodium Nitrate (16% N)", "pricePerKg": 12, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Calcium Nitrate (CAN) (15.5% N)", "pricePerKg": 15, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Anhydrous Ammonia (82% N)", "pricePerKg": 40, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Aqueous Ammonia (12% N)", "pricePerKg": 8, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Aqueous Nitrogen Solutions (26–32% N)", "pricePerKg": 20, "selected": false, "quantity": 0, "category": "Fertilizers" },
+     
+      { "name": "Superphosphate (OSP) (20% P)", "pricePerKg": 14, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Concentrated Superphosphate (CSP) (45% P)", "pricePerKg": 25, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Mono Ammonium Phosphate (MAP) (48% P)", "pricePerKg": 28, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Diammonium Phosphate (DAP) (46% P)", "pricePerKg": 27, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Ammonium Polyphosphate (APP) (34% P)", "pricePerKg": 23, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Rock Phosphate (38% P)", "pricePerKg": 18, "selected": false, "quantity": 0, "category": "Fertilizers" },
+     
+      { "name": "Organic Fertilizers", "pricePerKg": 10, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Foliar Feed Fertilizers", "pricePerKg": 12, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Compound Fertilizers (NPK 17:17:17)", "pricePerKg": 22, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Compound Fertilizers (NPK 15:15:15)", "pricePerKg": 20, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Compound Fertilizers (NPK 23:23:0)", "pricePerKg": 24, "selected": false, "quantity": 0, "category": "Fertilizers" },
+      { "name": "Compound Fertilizers (NPK 20:20:0)", "pricePerKg": 21, "selected": false, "quantity": 0, "category": "Fertilizers" }
+    ]
+  }
+  

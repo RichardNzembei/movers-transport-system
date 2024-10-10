@@ -1,9 +1,9 @@
 <script setup>
-import{ref} from 'vue'
-import adminNav from './adminNav.vue';
+import { ref } from "vue";
+import adminNav from "./adminNav.vue";
 const storedAdmins = JSON.parse(localStorage.getItem("admins")) || [];
 const loggedInEmail = localStorage.getItem("loggedInUserEmail");
-const currentAdmin=ref(null)
+const currentAdmin = ref(null);
 if (loggedInEmail) {
   currentAdmin.value = storedAdmins.find(
     (admin) => admin.email === loggedInEmail
@@ -29,12 +29,18 @@ if (loggedInEmail) {
         <div class="flex-1 p-2">
           <p class="mb-2">
             <strong class="font-mono font-bold text-lg mr-4">Category</strong>
-            <span class="text-gray-700">{{ currentAdmin.selected.toUpperCase() }}</span>
+            <span class="text-gray-700">{{
+              currentAdmin.selected.toUpperCase()
+            }}</span>
           </p>
           <p class="mb-2">
             <strong class="font-mono font-bold text-lg mr-4">Name </strong>
             <span class="text-gray-700">
-              {{ currentAdmin.fName.toUpperCase() + ' ' + currentAdmin.lName.toUpperCase() }}
+              {{
+                currentAdmin.fName.toUpperCase() +
+                " " +
+                currentAdmin.lName.toUpperCase()
+              }}
             </span>
           </p>
           <p class="mb-2">
@@ -43,20 +49,28 @@ if (loggedInEmail) {
           </p>
           <p class="mb-2">
             <strong class="font-mono font-bold text-lg mr-4">Gender </strong>
-            <span class="text-gray-700">{{ currentAdmin.gender.toUpperCase() }}</span>
+            <span class="text-gray-700">{{
+              currentAdmin.gender.toUpperCase()
+            }}</span>
           </p>
         </div>
         <div class="flex-1">
           <p class="mb-2">
             <strong class="font-mono font-bold text-lg mr-4">Company ID</strong>
-            <span class="text-gray-700">{{ currentAdmin.workId.toUpperCase() }}</span>
+            <span class="text-gray-700">{{
+              currentAdmin.workId.toUpperCase()
+            }}</span>
           </p>
           <p class="mb-2">
-            <strong class="font-mono font-bold text-lg mr-4">Company Email </strong>
+            <strong class="font-mono font-bold text-lg mr-4"
+              >Company Email
+            </strong>
             <span class="text-gray-700">{{ currentAdmin.companyemail }}</span>
           </p>
           <p class="mb-2">
-            <strong class="font-mono font-bold text-lg mr-4">Personal Email</strong>
+            <strong class="font-mono font-bold text-lg mr-4"
+              >Personal Email</strong
+            >
             <span class="text-gray-700">{{ currentAdmin.email }}</span>
           </p>
         </div>

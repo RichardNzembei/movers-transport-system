@@ -3,7 +3,6 @@ import { ref } from "vue";
 import { useDropdownStore } from "../stores/dropdownStore";
 import { useRouter } from "vue-router";
 
-
 const router = useRouter();
 const store = useDropdownStore();
 
@@ -23,9 +22,9 @@ const logout = () => {
   localStorage.removeItem("loggedInUserEmail");
   router.push("/");
 };
-const toadminprofile=()=>{
-    router.push('/adminprofile')
-}
+const toadminprofile = () => {
+  router.push("/adminprofile");
+};
 </script>
 
 <template>
@@ -58,31 +57,64 @@ const toadminprofile=()=>{
 
     <div
       class="fixed top-0 left-0 w-64 h-full bg-gray-300 shadow-lg p-5 transition-transform transform"
-      :class="{ 'translate-x-0': store.isDropdownVisible, '-translate-x-full': !store.isDropdownVisible }"
+      :class="{
+        'translate-x-0': store.isDropdownVisible,
+        '-translate-x-full': !store.isDropdownVisible,
+      }"
     >
       <div class="flex justify-between items-center mb-4">
         <span class="font-semibold">Contents</span>
         <button @click="store.toggleDropdown" class="text-lg">X</button>
       </div>
       <div class="flex items-center mb-4">
-        <img src="../assets/icons/home.png" alt="home icon" class="w-6 h-6 mr-2" />
-        <router-link to="/admindashboard" class="block text-black">Home</router-link>
+        <img
+          src="../assets/icons/home.png"
+          alt="home icon"
+          class="w-6 h-6 mr-2"
+        />
+        <router-link to="/admindashboard" class="block text-black"
+          >Home</router-link
+        >
       </div>
       <div class="flex items-center mb-4">
-        <img src="../assets/icons/members.png" alt="employees icon" class="w-6 h-6 mr-2" />
-        <router-link to="/employeedashboard" class="block text-black">Employees</router-link>
+        <img
+          src="../assets/icons/members.png"
+          alt="employees icon"
+          class="w-6 h-6 mr-2"
+        />
+        <router-link to="/employeedashboard" class="block text-black"
+          >Employees</router-link
+        >
       </div>
       <div class="flex items-center mb-4">
-        <img src="../assets/icons/members.png" alt="farmers icon" class="w-6 h-6 mr-2" />
-        <router-link to="/farmers" class="block text-black">Farmers</router-link>
+        <img
+          src="../assets/icons/members.png"
+          alt="farmers icon"
+          class="w-6 h-6 mr-2"
+        />
+        <router-link to="/farmers" class="block text-black"
+          >Farmers</router-link
+        >
       </div>
       <div class="flex items-center mb-4">
-        <img src="../assets/icons/orders.png" alt="transport order icon" class="w-6 h-6 mr-2" />
-        <router-link to="/transportdashboard" class="block text-black">Transport Orders</router-link>
+        <img
+          src="../assets/icons/orders.png"
+          alt="transport order icon"
+          class="w-6 h-6 mr-2"
+        />
+        <router-link to="/transportdashboard" class="block text-black"
+          >Transport Orders</router-link
+        >
       </div>
       <div class="flex items-center mb-4">
-        <img src="../assets/icons/revenue.png" alt="revenue icon" class="w-6 h-6 mr-2" />
-        <router-link to="/revenuedashboard" class="block text-black">Revenue & Profits</router-link>
+        <img
+          src="../assets/icons/revenue.png"
+          alt="revenue icon"
+          class="w-6 h-6 mr-2"
+        />
+        <router-link to="/revenuedashboard" class="block text-black"
+          >Revenue & Profits</router-link
+        >
       </div>
     </div>
   </nav>

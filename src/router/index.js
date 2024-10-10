@@ -11,6 +11,7 @@ import AdminRegistration from '../components/AdminRegistration.vue';
 import Farmers from '../components/Farmers.vue';
 import adminProfile from '../components/adminProfile.vue';
 import farmerProfile from '../components/farmerProfile.vue';
+import FarmerOrders from '../components/FarmerOrders.vue';
 
 
 
@@ -28,7 +29,8 @@ const routes = [
   { path: '/adminregistration', component: AdminRegistration },
   { path: '/farmers', component: Farmers },
   { path: '/adminprofile', component: adminProfile },
-  { path: '/farmerprofile', component: farmerProfile }
+  { path: '/farmerprofile', component: farmerProfile },
+  {path:'/farmerorder', component:FarmerOrders}
 
 
 
