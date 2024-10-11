@@ -83,7 +83,7 @@ onMounted(() => {
           (o) => o.status !== 'On Transit'
         )"
         :key="index"
-        class="flex shadow-xl p-2 rounded-xl border border-gray-300 space-x-6"
+        class="flex flex-col lg:flex-row shadow-xl p-2 rounded-xl border border-gray-300 space-x-6"
       >
         <div class="flex-2">
           <span class="font-mono text-gray-700">{{ order.farmerName }}</span>
@@ -149,7 +149,7 @@ onMounted(() => {
     </div>
 
     <div class="flex-1 shadow-xl w-full">
-      <h3 class="font-bold text-green-500 text-center">Transit Orders</h3>
+      <h3 class="font-bold text-green-500 text-center"> On-Transit Orders</h3>
       <div
         v-for="(order, index) in orders.filter(
           (o) => o.status === 'On Transit'
