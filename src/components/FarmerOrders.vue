@@ -19,6 +19,7 @@ const quantity = ref(0);
 const totalPrice = ref(0);
 const showModal = ref(false);
 const orderDetails = ref(null);
+const orders = ref([]);
 
 const fetchProducts = async () => {
   try {
@@ -69,9 +70,11 @@ const submitOrder = () => {
         quantity: quantity.value,
         totalPrice: totalPrice.value,
         timestamp: new Date().toISOString(),
+        status: "Pending",
       };
-
       storeOrderInLocalStorage(orderDetails.value);
+      orders.value.push(orderDetails.value);
+
       showModal.value = true;
 
       selectedCategory.value = null;
@@ -92,7 +95,15 @@ const storeOrderInLocalStorage = (order) => {
   localStorage.setItem("orders", JSON.stringify(existingOrders));
 };
 
-const orders = ref([]);
+const fetchOrdersFromLocalStorage = () => {
+  const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  if (currentFarmer.value) {
+    orders.value = storedOrders.filter(
+      (order) => order.farmerId === currentFarmer.value.NationalId
+    );
+  }
+};
 
 const listenForStorageChanges = () => {
   window.addEventListener("storage", (event) => {
@@ -102,14 +113,14 @@ const listenForStorageChanges = () => {
   });
 };
 
-const fetchOrdersFromLocalStorage = () => {
-  const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
-  orders.value = storedOrders;
-};
 onMounted(fetchProducts);
 onMounted(() => {
   fetchOrdersFromLocalStorage();
   listenForStorageChanges();
+});
+
+const pendingOrders = computed(() => {
+  return orders.value.filter((order) => order.status === "Pending");
 });
 </script>
 
@@ -189,26 +200,42 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
     <div class="flex-1 shadow-xl rounded-xl p-2">
       <h2 class="text-xl font-semibold mb-4 text-center">All Your Orders</h2>
       <div>
         <ul v-for="order in orders" :key="order.timestamp" class="mb-4">
-          <li>{{ order.productName }}</li>
+          <li>
+            <span>{{ order.productName }}</span>
+            <span class="ml-4">{{ order.quantity }} Kgs</span>
+            <span
+              class="ml-4 font-semibold"
+              :class="{
+                'text-green-500': order.status === 'On Transit',
+                'text-yellow-500': order.status === 'Pending',
+              }"
+            >
+              Status: {{ order.status }}
+            </span>
+          </li>
         </ul>
       </div>
     </div>
+
     <div class="flex-1 shadow-xl rounded-xl p-2">
       <h2 class="text-xl font-semibold mb-4 text-center">
         Track Pending Orders
       </h2>
       <div class="items-center justify-center">
-        <ul v-for="order in orders" :key="order.timestamp" class="mb-4">
+        <ul v-for="order in pendingOrders" :key="order.timestamp" class="mb-4">
           <span class="block">{{ order.productName }}</span>
           <span class="ml-8">{{ order.quantity }} Kgs</span>
+          <span class="ml-4 font-semibold text-yellow-500">
+            Status: {{ order.status }}
+          </span>
         </ul>
+        <p v-if="pendingOrders.length === 0">No pending orders.</p>
       </div>
     </div>
   </div>
 </template>
-
-
