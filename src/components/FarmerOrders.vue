@@ -51,10 +51,13 @@ const availableProducts = computed(() => {
 const updateTotalPrice = () => {
   if (selectedProduct.value && quantity.value > 0) {
     totalPrice.value = selectedProduct.value.pricePerKg * quantity.value;
-  } else {
+  }
+
+  else {
     totalPrice.value = 0;
   }
-};
+  }
+  
 
 const submitOrder = () => {
   if (selectedProduct.value && quantity.value > 0) {
@@ -153,7 +156,7 @@ const pendingOrders = computed(() => {
             :key="product.id"
             :value="product"
           >
-            {{ product.name }} ({{ product.pricePerKg }} $/kg)
+            {{ product.name }} ({{ product.pricePerKg }} )
           </option>
         </select>
       </div>

@@ -25,7 +25,7 @@ const fullname=storedFarmers.fName +''+ storedFarmers.lName
             </tr>
           </thead>
           <tbody>
-            <tr v-for="farmer in storedFarmers" :key="farmer.NationalId" class="hover:bg-gray-100">
+            <tr v-for="farmer in storedFarmers" :key="farmer.NationalId" class="hover:bg-blue-100 odd:bg-white even:bg-slate-50">
               <td class="border border-gray-300 px-4 py-2">{{ farmer.fName + ' ' + farmer.lName }}</td>
               <td class="border border-gray-300 px-4 py-2">{{ farmer.Selected }}</td>
               <td class="border border-gray-300 px-4 py-2">{{ farmer.email }}</td>

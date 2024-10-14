@@ -63,7 +63,14 @@ const drivers = computed(() =>
 const loaders = computed(() =>
   employees.value.filter((emp) => emp.category === "loader")
 );
+ const totalRevenue=computed(()=>{
 
+  return orders.value.filter(
+          (o) => o.status == 'On Transit'
+        ).reduce((total, order)=>
+   total+order.totalPrice,0
+  )
+ })
 onMounted(() => {
   fetchOrdersFromLocalStorage();
   listenForStorageChanges();
@@ -74,7 +81,7 @@ onMounted(() => {
 <template>
   <adminNav />
   <h2 class="text-xl font-semibold mb-4 text-center">Transport Orders</h2>
-
+<p>{{ totalRevenue }}</p>
   <div class="flex flex-col lg:flex-row justify-center items-start">
     <div class="flex-1 shadow-xl mr-2 w-full">
       <h3 class="font-bold text-blue-500 text-center">Pending Orders</h3>
